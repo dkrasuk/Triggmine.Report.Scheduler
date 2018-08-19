@@ -4,22 +4,29 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Triggmine.Report.Scheduler.Data.Context;
 using Triggmine.Report.Scheduler.Models;
+using Triggmine.Report.Scheduler.Services.CustomerService;
 
 namespace Triggmine.Report.Scheduler.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ICustomerService _customerService;
+        public HomeController(ICustomerService customerService)
+        {
+            _customerService = customerService;
+        }
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            ViewData["Message"] = "Your application description page.";
+            List<Customer> customer = await _customerService.GetAllCustomers();
 
-            return View();
+            return View(customer);
         }
 
         public IActionResult Contact()
