@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  triggmine.report.scheduler:
+    image: ${DOCKER_REGISTRY}triggminereportscheduler
+    build:
+      context: .
+      dockerfile: Triggmine.Report.Scheduler/Dockerfile
