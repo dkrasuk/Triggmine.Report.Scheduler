@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Triggmine.Report.Scheduler.Models
 {
@@ -30,6 +31,7 @@ namespace Triggmine.Report.Scheduler.Models
         public string LogoUrl { get; set; }
         public string SupportEmail { get; set; }
         public string TemplateColor { get; set; }
+        [DataType(DataType.Date)]
         public DateTime RegistrationDate { get; set; }
         public Guid? IndustryUid { get; set; }
         public string ShopAlias { get; set; }
@@ -38,6 +40,7 @@ namespace Triggmine.Report.Scheduler.Models
         public bool IsFbIntegrated { get; set; }
         public bool? NeedNotification { get; set; }
         public string CustomerUid { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? LastSingInDate { get; set; }
     }
 }
