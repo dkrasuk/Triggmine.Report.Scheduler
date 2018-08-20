@@ -1,12 +1,19 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
-EXPOSE 65468
-EXPOSE 44375
+#EXPOSE 65468
+#EXPOSE 44375
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
+COPY *.sln ./
+COPY NuGet.config  ./
+
 COPY Triggmine.Report.Scheduler/Triggmine.Report.Scheduler.csproj Triggmine.Report.Scheduler/
-RUN dotnet restore Triggmine.Report.Scheduler/Triggmine.Report.Scheduler.csproj
+COPY Triggmine.Report.Scheduler.Shared/Triggmine.Report.Scheduler.Shared.csproj Triggmine.Report.Scheduler.Shared/
+COPY docker-compose.dcproj ./
+
+RUN dotnet restore Triggmine.Report.Scheduler.sln --configfile NuGet.config
+
 COPY . .
 WORKDIR /src/Triggmine.Report.Scheduler
 RUN dotnet build Triggmine.Report.Scheduler.csproj -c Release -o /app
