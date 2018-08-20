@@ -22,8 +22,7 @@ namespace Triggmine.Report.Scheduler.Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                optionsBuilder.UseNpgsql("Host=52.208.138.95;Database=Authorization;Username=dev_dbo;Password=dev_dbo");
+                optionsBuilder.UseNpgsql(ReportSchedulerBootstrapper.Instance.ConnectionString("AuthorizationConnection"));
             }
         }
 
