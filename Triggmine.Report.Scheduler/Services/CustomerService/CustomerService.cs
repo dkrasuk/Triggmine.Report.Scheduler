@@ -13,7 +13,7 @@ namespace Triggmine.Report.Scheduler.Services.CustomerService
         {
             using (var context = new AuthorizationContext())
             {
-                return context.Customer.Take(50).ToList();
+                return context.Customer.ToList();
             }
         }
         public async Task<List<Customer>> GetcustomersByRegistrationDate(DateTime startDate, DateTime endDate)

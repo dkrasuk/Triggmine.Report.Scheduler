@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Triggmine.Report.Scheduler.Data.Context;
 using Triggmine.Report.Scheduler.Services.CustomerService;
+using Triggmine.Report.Scheduler.Services.CabinetService;
 
 namespace Triggmine.Report.Scheduler
 {
@@ -47,6 +48,7 @@ namespace Triggmine.Report.Scheduler
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<ICabinetService, CabinetService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

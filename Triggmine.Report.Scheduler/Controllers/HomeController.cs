@@ -22,12 +22,12 @@ namespace Triggmine.Report.Scheduler.Controllers
             return View();
         }
 
-        public async Task<IActionResult> About()
-        {
-            List<Customer> customer = await _customerService.GetAllCustomers();
+        //public async Task<IActionResult> About()
+        //{
+        //    List<Customer> customer = await _customerService.GetAllCustomers();
 
-            return View(customer);
-        }
+        //    return View(customer);
+        //}
 
         public IActionResult Contact()
         {
